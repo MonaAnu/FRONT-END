@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda+One">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-4">   
+        <div class="container">     
+            <a class="navbar-brand text-white"><span class="title">HOTEL TAJ</span></a>     
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"        
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">   
+                    <span class="navbar-toggler-icon text-black"></span>     
+            </button>      
+            <div class="collapse navbar-collapse" id="navbarNav">     
+                  <div class="mx-auto"></div>     
+                  <ul class="navbar-nav">       
+                      <li class="nav-item">         
+                          <a class="nav-link text-white" href="#">Home</a>     
+                            </li>   
+                </ul>     
+            </div>   
+        </div> 
+    </nav>
+
+    <div class="signup-form">
+        <form [formGroup]="signupForm">
+            <div class="avatar"><i class="material-icons">&#xE7FF;</i></div><br>
+            <h2>Register</h2>
+            <div class="form-group">
+                
+                <input [class.is-invalid]="signupForm.get('userName')?.touched && signupForm.get('userName')?.invalid" type="text" class="form-control" formControlName="userName" name="userName" placeholder="Name" required="required">       
+                   
+                <div *ngIf="signupForm.get('userName')?.touched && signupForm.get('userName')?.invalid">
+              
+                    <small *ngIf="signupForm.get('userName')?.errors!['required']" class="text-danger"> Name is required</small>                  
+                    <small *ngIf="signupForm.get('userName')?.errors!['minlength']" class="text-danger">Name must be at least 3 characters</small><br>
+                    <small *ngIf="signupForm.get('userName')?.errors!['pattern']" class="text-danger">Username should be only in Alphabets</small>               
+                </div> 
+            </div>
+            <div class="form-group">               
+                <select (blur)="validateRole(signupForm.get('role')?.value)" (change)="validateRole(signupForm.get('role')?.value)" [class.is-invalid]="roleHasError && signupForm.get('role')?.touched" name="Role" class="form-control" name="Role"                   
+                    formControlName="role"  placeholder="Role"  required="required">                   
+                    <option value="Role" selected disabled hidden>Role</option>                   
+                    <option value="ROLE_RECEPTIONIST">Receptionist</option>                                       
+                    <option value="ROLE_MANAGER">Manager</option>                                      
+                    <option value="ROLE_OWNER">Owner</option>               
+                </select>               
+                <small class="text-danger" [class.d-none]="!roleHasError || signupForm.get('role')?.untouched">Please select the Role</small>           
+            </div>
+            <div class="form-group">                
+                    <input  formControlName="password" type="password" class="form-control" name="password" placeholder="Password" required [class.is-invalid]="password!.invalid && password!.touched" [class.is-valid]="password!.valid && !password!.errors">               
+                <div *ngIf="password!.invalid && password!.touched">                   
+                    <small class="text-danger" *ngIf="password!.errors!['required']">Password is required</small> 
+                    <small *ngIf="password?.errors!['minlength']" class="text-danger">Password must be at least 5 characters</small> 
+                </div>            
+            </div> 
+            <div class="form-group">                
+                                       
+                    <input formControlName="confirmPassword" type="password" class="form-control" name="confirm_password" placeholder="Confirm Password"  required [class.is-invalid]="confirmPassword!.invalid && confirmPassword!.touched" [class.is-valid]="confirmPassword!.valid && !confirmPassword!.errors">               
+                <div *ngIf="confirmPassword!.invalid && confirmPassword!.touched">
+                                       
+                    <small class="text-danger" *ngIf="confirmPassword!.errors!['required']">Confirm Password is required</small>                   
+                    <small class="text-danger" *ngIf="confirmPassword!.errors!['matching']">Password doesn't match</small>               
+                </div>           
+            </div>
+            <input (click)="onSubmit()" type="submit" class="btn btn-primary btn-block" value="SignUp"><br><br>
+            <div class="text-center">Already have an account? <a routerLink="/signin"> Login here</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+
+
+
+   
