@@ -1,0 +1,27 @@
+body{
+    background: linear-gradient(to bottom, rgb(172, 85, 194), rgb(148, 87, 150));
+}
+input{
+    width: 250px;
+    align-items:center;
+}
+.card{
+    background-color: rgb(108, 48, 128);
+    color: aliceblue;
+     height: 705px;
+     width: 500px;
+     align-items: center;
+}
+.container{
+     margin-left:350px;
+     padding: 50px;
+     background: linear-gradient(to bottom, rgb(172, 85, 194), rgb(148, 87, 150));
+
+     /* margin-top: 50px;
+     margin-bottom: 70px; */
+}
+.navbar{
+	height: 50px;
+    /* width: 1000px; */
+	background-color: #51175f;
+}

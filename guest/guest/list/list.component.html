@@ -1,0 +1,50 @@
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"       rel="stylesheet">
+</head>
+<h1>Guest Details
+    <!-- <a class="link" href="#">Home</a>  -->
+    <!-- &nbsp; &nbsp;<li class="nav-item">                -->
+        <a class="link" role="button" (click)="navigate()">Dashboard</a>           
+
+</h1>
+
+
+<body>
+
+    <div style="float: right;">
+        <a [routerLink]="['/guest/add']" class="text-primary"><button class="btn btn-light"><i class="material-icons"
+                    id="add">&#xe7fe;</i>Add Guest</button></a> &nbsp;
+        <br><br>
+    </div>
+
+    <table>
+        <thead>
+
+            <th>Guest Id</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Gender</th>
+            <th>email</th>
+            <th>Address</th>
+            <th>Actions</th>
+
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let guest of guests">
+                <td style="background-color: rgb(228, 214, 227);"> {{ guest.guestId }}</td>
+                <td style="background-color: rgb(228, 214, 227);"> {{ guest.name }}</td>
+                <td style="background-color: rgb(228, 214, 227);"> {{ guest.contact }}</td>
+                <td style="background-color: rgb(228, 214, 227);"> {{ guest.gender }}</td>
+                <td style="background-color: rgb(228, 214, 227);"> {{ guest.email }}</td>
+                <td style="background-color: rgb(228, 214, 227);"> {{ guest.address }}</td>
+                <td style="background-color: rgb(228, 214, 227);">
+                    <a [routerLink]="['/guest/update',guest.guestId]" class="text-warning"><i class="material-icons"
+                            id="edit">&#xf88d;</i></a>&nbsp;
+                    <a (click)="deleteguest(guest.guestId)" role="button" class="text-danger"><i class="material-icons"
+                            id="delete">&#xe92b;</i></a>&nbsp;
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>

@@ -1,0 +1,38 @@
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"       rel="stylesheet">
+</head>
+<h1>Reservation Details
+    <a class="link" role="button" (click)="navigate()">Dashboard</a>           
+
+</h1>
+<div style="float: right;">
+    <a [routerLink]="['/res/add']" class="text-primary"><button class="btn btn-light"><i class="material-icons" id="add">&#xe7fe;</i>Add Reservation</button></a> &nbsp;
+    <br><br>
+</div>
+<table>
+    <thead>
+        
+            <th>Res Code</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <!-- <th>Room Type</th> -->
+            <th>Actions</th>
+        
+    </thead>
+    <tbody>
+        <tr *ngFor="let reservation of reservations">
+            <td style="background-color: rgb(228, 214, 227);"> {{ reservation.reservationCode }}</td>
+            <td style="background-color: rgb(228, 214, 227);"> {{ reservation.name }}</td>
+            <td style="background-color: rgb(228, 214, 227);"> {{ reservation.gender }}</td>
+            <td style="background-color: rgb(228, 214, 227);">  {{ reservation.checkIn }}</td>
+            <td style="background-color: rgb(228, 214, 227);"> {{ reservation.checkOut }}</td>
+            <!-- <td style="background-color: rgb(228, 214, 227);"> {{ reservation.roomType }}</td> -->
+            <td style="background-color: rgb(228, 214, 227);">
+                <a [routerLink]="['/res/update', reservation.reservationCode]" class="text-warning"><i class="material-icons" id="edit">&#xf88d;</i></a>&nbsp;
+                <a (click)="deleteReservation(reservation.reservationCode)" role="button" class="text-danger"><i class="material-icons" id="delete">&#xe92b;</i></a>&nbsp;
+            </td>
+        </tr>
+    </tbody>
+</table>

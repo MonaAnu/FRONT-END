@@ -1,0 +1,36 @@
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"       rel="stylesheet">
+</head>
+<h1>Inventory Details
+    <!-- <a class="link" href="#">Home</a> -->
+    <a class="link" role="button" (click)="navigate()">Dashboard</a>           
+
+</h1>
+<div style="float: right;">
+    <a [routerLink]="['/inventory/add']" class="text-primary"><button class="btn btn-light"><i class="material-icons" id="add">&#xe7fe; </i>Add Inventory</button></a>&nbsp;
+    <br><br>
+</div>
+
+<table>
+    <thead>
+        
+            <th>Inventory Code</th>
+            <th>Inventory Type</th>
+            <th>Inventory Name</th>
+            <th>Inventory Quantity</th>
+            <th>Actions</th>
+        
+    </thead>
+    <tbody>
+        <tr *ngFor="let inv of inventory">
+            <td style="background-color: rgb(228, 214, 227);">{{inv.inventoryCode}}</td>
+            <td style="background-color: rgb(228, 214, 227);">{{inv.inventoryType}}</td>
+            <td style="background-color: rgb(228, 214, 227);">{{inv.inventoryName}}</td>
+            <td style="background-color: rgb(228, 214, 227);">{{inv.inventoryQuantity}}</td>
+            <td style="background-color: rgb(228, 214, 227);">
+                <a [routerLink]="['/inventory/update',inv.inventoryCode]" class="text-warning"><i class="material-icons" id="edit">&#xf88d;</i></a>&nbsp;
+                <a (click)="deleteInventory(inv.inventoryCode)" role="button" class="text-danger"><i class="material-icons" id="delete">&#xe92b;</i></a>&nbsp;
+            </td>
+        </tr>
+    </tbody>
+</table>

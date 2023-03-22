@@ -1,0 +1,40 @@
+input {
+    width: 60%;
+    padding: 8px 2px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    background: linear-gradient(to bottom, rgb(122, 36, 108), rgb(142, 75, 151));
+    border: 1px solid rgb(255, 254, 254);
+    color: white;
+}
+
+tr,td
+ {
+    border: 2px solid #613b64;
+    color: #0b060c;
+}
+
+td,
+th {
+    text-align: center;
+    padding: 8px;
+    background-color: #def3f8;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    background: linear-gradient(to right, rgb(184, 45, 172), rgb(59, 59, 100));
+}
+.link{
+    color:aliceblue;
+    font-size: 15px;
+    text-decoration:underline;
+}

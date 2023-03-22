@@ -1,0 +1,42 @@
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"       rel="stylesheet">
+</head>
+<h1>Staff Details
+    <!-- <a class="link" href="#">Home</a> -->
+    <a class="link" role="button" (click)="navigate()">Dashboard</a>           
+
+</h1>
+<div style="float: right;">
+    <a [routerLink]="['/staff/add']" class="text-primary"><button class="btn btn-light"><i class="material-icons" id="add">&#xe7fe;</i>Add Staff</button></a> &nbsp;
+    <br><br>
+</div>
+<table>
+    <thead>
+       
+            <th>Id</th>
+            <th>Employee Name</th>
+            <th>Phone No</th>
+            <th>email</th>
+            <th>Age</th>
+            <th>Employee Address</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        
+    </thead>
+    <tbody>
+        <tr *ngFor="let staff of staffs">
+            <td style="background-color: rgb(228, 214, 227);"> {{ staff.id }}</td>
+            <td style="background-color: rgb(228, 214, 227);"> {{ staff.employeeName }}</td>
+            <td style="background-color: rgb(228, 214, 227);"> {{ staff.phoneNo }}</td>
+            <td style="background-color: rgb(228, 214, 227);"> {{ staff.email }}</td>
+            <td style="background-color: rgb(228, 214, 227);"> {{ staff.age }}</td>
+            <td style="background-color: rgb(228, 214, 227);"> {{ staff.employeeAddress }}</td>
+            <td style="background-color: rgb(228, 214, 227);"> {{ staff.salary }}</td>
+            <td style="background-color: rgb(228, 214, 227);">
+                <a [routerLink]="['/staff/update', staff.id]" class="text-warning"><i class="material-icons" id="edit">&#xf88d;</i></a>&nbsp;
+                <a (click)="deleteStaff(staff.id)" role="button" class="text-danger"><i class="material-icons" id="delete">&#xe92b;</i></a>&nbsp;
+            </td>
+
+        </tr>
+    </tbody>
+</table>
